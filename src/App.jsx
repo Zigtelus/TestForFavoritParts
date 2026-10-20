@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import SearchForm from './components/SearchForm';
-import BrandList from './components/BrandList';
-import PartsTable from './components/PartsTable';
-import { useGetBrandsQuery, useLazyGetAnalogsQuery } from './store/partsApi';
+import SearchForm from '@/components/SearchForm';
+import BrandList from '@/components/BrandList';
+import { useGetBrandsQuery, useLazyGetAnalogsQuery } from '@/store/partsApi';
+import PartsTable from '@/components/PartsTable';
 
 function App() {
   const [activeNumber, setActiveNumber] = useState('');
@@ -74,10 +74,11 @@ function App() {
         <div className="col-12 col-md-8">
           <PartsTable 
             analogs={analogs}
-            isLoading={isAnalogsFetching}
+            isLoading={isBrandsFetching || isAnalogsFetching}
             selectedBrand={selectedBrand}
             isSearched={!!activeNumber}
             isError={!!(brandsError || analogsError)}
+            noBrandsFound={!brands || brands.length === 0} 
           />
         </div>
       </div>

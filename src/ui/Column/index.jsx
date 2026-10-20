@@ -27,7 +27,7 @@ Column.Body = function ({ isLoading, isError, children, className, style }) {
 
   if (isError) {
     return (
-      <p className="text-center text-muted my-3"> Упс, что-то пошло не так </p>
+      <p className={`text-center text-muted my-3 ${className || ''}`} style={style}> Упс, что-то пошло не так </p>
     );
   }
 

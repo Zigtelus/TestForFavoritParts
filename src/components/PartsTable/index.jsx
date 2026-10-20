@@ -1,4 +1,3 @@
-import React from 'react';
 import Column from '@/ui/Column';
 import Head from './Head';
 import Body from './Body';
@@ -32,10 +31,14 @@ function PartsTable({ analogs, isLoading, selectedBrand, isSearched, isError, no
     <Column>
       <Column.Title>2. Результаты поиска и аналоги</Column.Title>
       <Column.Body
+        className="overflow-auto"
+        style={{ height: '50vh' }}
         isLoading={isLoading}
         isError={isError}
       >
-        {renderContent()}
+        <div className="overflow-y-auto">
+          {renderContent()}
+        </div>
       </Column.Body>
     </Column>
   );

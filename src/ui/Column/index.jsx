@@ -1,7 +1,6 @@
 function Column({ children }) {
-
   return (
-    <div className="card shadow-sm h-100">
+    <div className="card shadow-sm">
       {children}
     </div>
   );
@@ -15,10 +14,10 @@ Column.Title = function ({ children }) {
   );
 };
 
-Column.Body = function ({ isLoading, isError, children }) {
+Column.Body = function ({ isLoading, isError, children, className, style }) {
   if (isLoading) {
     return (
-      <div className="card-body text-center my-3">
+      <div className={`card-body text-center py-3 ${className || ''}`} style={style}>
         <div className="spinner-border text-primary" role="status">
           <span className="visually-hidden">Загрузка...</span>
         </div>
@@ -33,7 +32,7 @@ Column.Body = function ({ isLoading, isError, children }) {
   }
 
   return (
-    <div className="card-body">
+    <div className={`card-body ${className || ''}`} style={style}>
       {children}
     </div>
   );

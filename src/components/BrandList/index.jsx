@@ -1,4 +1,3 @@
-import React from 'react';
 import Column from '@/ui/Column';
 
 function BrandList({ brands, isLoading, selectedBrand, onBrandSelect, isSearched, isError }) {
@@ -10,7 +9,7 @@ function BrandList({ brands, isLoading, selectedBrand, onBrandSelect, isSearched
       return "По данному артикулу ничего не найдено";
 
     return (
-      <div className="list-group" style={{ maxHeight: '400px', overflowY: 'auto' }}>
+      <div className="list-group">
         {brands.map((brand) => (
           <button 
             key={brand}
@@ -29,6 +28,8 @@ function BrandList({ brands, isLoading, selectedBrand, onBrandSelect, isSearched
     <Column>
       <Column.Title>1. Производители</Column.Title>
       <Column.Body
+        className="overflow-auto"
+        style={{ height: '50vh' }}
         isLoading={isLoading}
         isError={isError}
       >

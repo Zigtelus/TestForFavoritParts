@@ -24,12 +24,17 @@ function SearchForm({ onSearch }) {
       <div className="card-body">
         <form onSubmit={handleSubmit} className="row g-3">
           <div className="col-12 col-sm-9">
-            <input 
-              type="text" 
+            <label htmlFor="sku-search-input" className="visually-hidden">
+              Номер детали для поиска брендов
+            </label>
+            <input
+              id="sku-search-input"
+              type="search" 
               className="form-control form-control-lg"
               placeholder="Введите номер детали (например, 01089)..." 
               value={searchNumber}
               onChange={(e) => setSearchNumber(e.target.value)}
+              aria-label="Номер автомобильной детали"
             />
           </div>
           <div className="col-12 col-sm-3">

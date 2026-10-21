@@ -3,23 +3,26 @@ import Column from '@/ui/Column';
 function BrandList({ brands, isLoading, selectedBrand, onBrandSelect, isSearched, isError }) {
   const renderContent = () => {
     if (!isSearched)
-      return "Введите артикул выше для начала подбора";
+      return <div role="status" className="text-secondary">Введите артикул выше для начала подбора"</div>;
 
     if (!brands || brands.length === 0)
-      return "По данному артикулу ничего не найдено";
+      return <div role="status" className="text-secondary">По данному артикулу ничего не найден</div>;
 
     return (
-      <div className="list-group">
-        {brands.map((brand) => (
-          <button 
-            key={brand}
-            type="button" 
-            className={`list-group-item list-group-item-action fw-semibold cursor-pointer ${selectedBrand === brand ? 'active' : ''}`}
-            onClick={() => onBrandSelect(brand)}
-          >
-            {brand}
-          </button>
-        ))}
+      <div className="overflow-auto" style={{ maxHeight: 'calc(100vh - 500px)', minHeight: '100px' }}>
+        <div className="list-group">
+          {brands.map((brand) => (
+            <button 
+              key={brand}
+              type="button" 
+              className={`list-group-item list-group-item-action fw-semibold cursor-pointer ${selectedBrand === brand ? 'active' : ''}`}
+              onClick={() => onBrandSelect(brand)}
+              aria-selected={selectedBrand === brand}
+            >
+              {brand}
+            </button>
+          ))}
+        </div>
       </div>
     )
   };
@@ -28,8 +31,6 @@ function BrandList({ brands, isLoading, selectedBrand, onBrandSelect, isSearched
     <Column>
       <Column.Title>1. Производители</Column.Title>
       <Column.Body
-        className="overflow-auto"
-        style={{ height: '50vh' }}
         isLoading={isLoading}
         isError={isError}
       >

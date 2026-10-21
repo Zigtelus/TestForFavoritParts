@@ -14,11 +14,15 @@ Column.Title = function ({ children }) {
   );
 };
 
-Column.Body = function ({ isLoading, isError, children, className, style }) {
+Column.Body = function ({ isLoading, isError, children }) {
   if (isLoading) {
     return (
-      <div className={`card-body text-center py-3 ${className || ''}`} style={style}>
-        <div className="spinner-border text-primary" role="status">
+      <div className="card-body text-center py-3">
+        <div
+          className="spinner-border text-primary"
+          role="status"
+          aria-live="polite"
+        >
           <span className="visually-hidden">Загрузка...</span>
         </div>
       </div>
@@ -27,12 +31,12 @@ Column.Body = function ({ isLoading, isError, children, className, style }) {
 
   if (isError) {
     return (
-      <p className={`text-center text-muted my-3 ${className || ''}`} style={style}> Упс, что-то пошло не так </p>
+      <span className="text-center text-secondary py-3"> Упс, что-то пошло не так </span>
     );
   }
 
   return (
-    <div className={`card-body ${className || ''}`} style={style}>
+    <div className="card-body">
       {children}
     </div>
   );

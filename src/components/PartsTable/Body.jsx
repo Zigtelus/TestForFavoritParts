@@ -23,7 +23,11 @@ function Body ({ analogs }) {
               <div className="fw-bold text-dark">{good.name || 'Наименование не указано'}</div>
               <code className="text-secondary">{good.number}</code>
               {(good.notRefund || wh.notRefund) && (
-                <span className="badge bg-warning text-dark ms-2" style={{ fontSize: '0.75rem' }}>
+                <span
+                  className="badge bg-warning text-dark ms-2"
+                  style={{ fontSize: '0.75rem' }}
+                  aria-label="Внимание: позиция не подлежит возврату"
+                >
                   Невозвратный
                 </span>
               )}
